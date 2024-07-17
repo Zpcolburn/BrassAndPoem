@@ -44,7 +44,7 @@ List<ProductType> productTypes = new List<ProductType>()
     },
     new ProductType()
     {
-        Title = " Brass Instruments",
+        Title = "Brass Instruments",
         Id = 2
     }
 };
@@ -70,7 +70,7 @@ while (choice != "5")
     }
     else if (choice == "2")
     {
-        // DisplayAllProducts();
+        DisplayAllProducts();
     }
     else if (choice == "3")
     {
@@ -106,7 +106,7 @@ void DisplayMenu()
 
         if (choice == "1")
         {
-            // DisplayAllProducts();
+            DisplayAllProducts();
         }
         else if (choice == "2")
         {
@@ -127,9 +127,13 @@ void DisplayMenu()
     }
 }    
 
-void DisplayAllProducts(List<Product> products, List<ProductType> productTypes)
+void DisplayAllProducts()
 {
-    throw new NotImplementedException();
+    for (int i = 0; i < products.Count; i++)
+    {
+        string title = productTypes.First(p => p.Id == products[i].ProductTypeId).Title;
+        Console.WriteLine($"Item:{products[i].Name} Price: {products[i].Price} Type: {title} ");
+    }
 }
 void DeleteProduct(List<Product> products, List<ProductType> productTypes)
 {
