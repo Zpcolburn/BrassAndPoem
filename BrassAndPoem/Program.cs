@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Numerics;
-//create a "products" variable here to include at least five Product instances. Give them appropriate ProductTypeIds.
+using System.Linq;
 List<Product> products = new List<Product>()
 {
     new Product()
@@ -53,63 +53,97 @@ string greeting = @"Welcome to Brass & Poem – Your One-Stop Shop for Timeless 
 Console.WriteLine(greeting);
 
 string choice = null;
-while (choice != null)
+while (choice != "5")
 {
     Console.WriteLine(@"Please choose a option:
+                        1. Display menu
+                        2. Display all products
+                        3. Delete a product
+                        4. Add a new product
+                        5. Update product
+                        6. Exit");
+
+    choice = Console.ReadLine();
+    if (choice == "1")
+    {
+        DisplayMenu();
+    }
+    else if (choice == "2")
+    {
+        // DisplayAllProducts();
+    }
+    else if (choice == "3")
+    {
+        // DeleteProduct();
+    }
+    else if (choice == "4")
+    {
+        // AddProduct();
+    }
+    else if (choice == "5")
+    {
+        // UpdateProduct();
+    }
+    else if (choice == "6")
+    {
+        Console.WriteLine("Goodbye!");
+    }
+
+}
+void DisplayMenu()
+{
+    string choice = null;
+    while (choice != "5")
+    {
+        Console.WriteLine(@"Please choose a option:
                         1. Display all products
                         2. Delete a product
                         3. Add a new product
                         4. Update product
                         5. Exit");
 
-    choice = Console.ReadLine();
-    if (choice == "1")
-    {
-        // DisplayAllProducts();
-    }
-    else if (choice == "2")
-    {
-        // DeleteProduct();
-    }
-    else if (choice == "3")
-    {
-        // AddProduct();
-    }
-    else if (choice == "4")
-    {
-        // UpdateProduct();
-    }
-    else if (choice == "5")
-    {
-        Console.WriteLine("Goodbye!");
-    }
-}
+        choice = Console.ReadLine();
 
-
-void DisplayMenu()
-{
-    throw new NotImplementedException();
-}
+        if (choice == "1")
+        {
+            // DisplayAllProducts();
+        }
+        else if (choice == "2")
+        {
+            // DeleteProduct();
+        }
+        else if (choice == "3")
+        {
+            // AddProduct();
+        }
+        else if (choice == "4")
+        {
+            // UpdateProduct();
+        }
+        else if (choice == "5")
+        {
+            Console.WriteLine("Goodbye!");
+        }
+    }
+}    
 
 void DisplayAllProducts(List<Product> products, List<ProductType> productTypes)
 {
     throw new NotImplementedException();
 }
-
 void DeleteProduct(List<Product> products, List<ProductType> productTypes)
 {
-    throw new NotImplementedException();
+     throw new NotImplementedException();
 }
 
 void AddProduct(List<Product> products, List<ProductType> productTypes)
 {
-    throw new NotImplementedException();
+     throw new NotImplementedException();
 }
 
 void UpdateProduct(List<Product> products, List<ProductType> productTypes)
 {
-    throw new NotImplementedException();
+     throw new NotImplementedException();
 }
-
 // don't move or change this!
 public partial class Program { }
