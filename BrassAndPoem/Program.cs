@@ -132,7 +132,7 @@ void DisplayAllProducts()
     for (int i = 0; i < products.Count; i++)
     {
         string title = productTypes.First(p => p.Id == products[i].ProductTypeId).Title;
-        Console.WriteLine($"Item:{products[i].Name} Price: {products[i].Price} Type: {title} ");
+        Console.WriteLine($"Item:{products[i].Name} Price: ${products[i].Price} Type: {title} ");
     }
 }
 void DeleteProduct(List<Product> products, List<ProductType> productTypes)
