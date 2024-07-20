@@ -132,23 +132,22 @@ void DisplayAllProducts()
     for (int i = 0; i < products.Count; i++)
     {
         string title = productTypes.First(p => p.Id == products[i].ProductTypeId).Title;
-        Console.WriteLine($"Item:{products[i].Name} Price: ${products[i].Price} Type: {title} ");
+        Console.WriteLine($"Item:{i + 1}.{products[i].Name} Price: ${products[i].Price} Type: {title} ");
     }
 }
 void DeleteProduct()
 {
-    for (int i = 0; i < products.Count; i++)
+    DisplayAllProducts();
+    Console.WriteLine("Enter the number of the product you want to delete: ");
+
+    int index;
+    while(!int.TryParse(Console.ReadLine(), out index) || index < 0 || index >= products.Count)
     {
-        string title = productTypes.First(p => p.Id == products[i].ProductTypeId).Title;
-        Console.WriteLine($"Item:{products[i].Name} Price: ${products[i].Price} Type: {title} ");
+        Console.WriteLine("Invalid Number. Please enter a valid number: ");
     }
 
-    Console.WriteLine("Please enter the number of the product that you want to delete: ");
-    int choice;
-    while(!int.TryParse( Console.ReadLine(), out choice) || choice < 1 || choice > products.Count)
-    {
-        Console.WriteLine("Please enter the correct number to the product: ");
-    }
+    products.RemoveAt(index - 1);
+    Console.WriteLine("The product was deleted!");
 
 }
 
