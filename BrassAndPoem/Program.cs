@@ -82,7 +82,7 @@ while (choice != "5")
     }
     else if (choice == "5")
     {
-        // UpdateProduct();
+        UpdateProduct();
     }
     else if (choice == "6")
     {
@@ -118,7 +118,7 @@ void DisplayMenu()
         }
         else if (choice == "4")
         {
-            // UpdateProduct();
+            UpdateProduct();
         }
         else if (choice == "5")
         {
@@ -186,9 +186,45 @@ void AddProduct()
     Console.WriteLine("Product is now added.");
 }
 
-void UpdateProduct(List<Product> products, List<ProductType> productTypes)
+void UpdateProduct()
 {
-     throw new NotImplementedException();
+    DisplayAllProducts();
+    Console.WriteLine("Enter the number of the product you want to update: ");
+
+    int index;
+    while(!int.TryParse(Console.ReadLine(), out index) || index < 1 || index > products.Count)
+    {
+        Console.WriteLine("Invalid number, please enter a valid number: ");
+    }
+
+    Product productToUpdate = products[index - 1];
+    Console.WriteLine($"Enter the new name of the product (current: {productToUpdate.Name}): ");
+    string newName = Console.ReadLine();
+    if (!string.IsNullOrEmpty(newName) )
+    {
+        productToUpdate.Name = newName;
+    }
+
+    Console.WriteLine($"Enter the new price of the product (current: {productToUpdate.Price}): ");
+    string newPriceInput = Console.ReadLine();
+    if (!string.IsNullOrEmpty(newPriceInput) && decimal.TryParse(newPriceInput, out decimal newPrice))
+    {
+        productToUpdate.Price = newPrice;
+    }
+
+    Console.WriteLine("Choose a new product type (leave empty to keep the same): ");
+    for (int i = 0; i < products.Count; i++)
+    {
+        Console.WriteLine($"{i + 1}. {productTypes[i].Title}");
+    }
+
+    string newTypeIdInput = Console.ReadLine();
+    if (string.IsNullOrEmpty(newTypeIdInput) && int.TryParse(newTypeIdInput, out int newTypeId) && newTypeId >= 1 && newTypeId <= productTypes.Count)
+    {
+        productToUpdate.ProductTypeId = productTypes[newTypeId - 1].Id;
+    }
+
+    Console.WriteLine("Product updated!");
 }
 // don't move or change this!
 public partial class Program { }
