@@ -74,11 +74,11 @@ while (choice != "5")
     }
     else if (choice == "3")
     {
-        // DeleteProduct();
+        DeleteProduct();
     }
     else if (choice == "4")
     {
-        // AddProduct();
+         AddProduct();
     }
     else if (choice == "5")
     {
@@ -110,11 +110,11 @@ void DisplayMenu()
         }
         else if (choice == "2")
         {
-            // DeleteProduct();
+            DeleteProduct();
         }
         else if (choice == "3")
         {
-            // AddProduct();
+            AddProduct();
         }
         else if (choice == "4")
         {
@@ -135,14 +135,44 @@ void DisplayAllProducts()
         Console.WriteLine($"Item:{products[i].Name} Price: ${products[i].Price} Type: {title} ");
     }
 }
-void DeleteProduct(List<Product> products, List<ProductType> productTypes)
+void DeleteProduct()
 {
-     throw new NotImplementedException();
+    
 }
 
-void AddProduct(List<Product> products, List<ProductType> productTypes)
+void AddProduct()
 {
-     throw new NotImplementedException();
+    Console.WriteLine("Enter the name of the new product: ");
+    string name = Console.ReadLine();
+
+    Console.WriteLine("Enter the price of the new product: ");
+    decimal price;
+    while (!decimal.TryParse(Console.ReadLine(), out price))
+    {
+        Console.WriteLine("Invalid price. Please enter a valid price: ");
+    }
+
+    Console.WriteLine("Choose a product type: ");
+    for (int i = 0; i < productTypes.Count; i++)
+    {
+        Console.WriteLine($"{i + 1}. {productTypes[i].Title}");
+    }
+
+    int typeId;
+    while(!int.TryParse(Console.ReadLine(), out typeId) || typeId < 1 || typeId > productTypes.Count)
+    {
+        Console.WriteLine("Invalid choice. Please choose a valid product type: ");
+    }
+
+    Product newProduct = new Product
+    {
+        Name = name,
+        Price = price,
+        ProductTypeId = productTypes[typeId - 1].Id
+    };
+
+    products.Add(newProduct);
+    Console.WriteLine("Product is now added.");
 }
 
 void UpdateProduct(List<Product> products, List<ProductType> productTypes)
