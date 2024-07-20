@@ -137,7 +137,19 @@ void DisplayAllProducts()
 }
 void DeleteProduct()
 {
-    
+    for (int i = 0; i < products.Count; i++)
+    {
+        string title = productTypes.First(p => p.Id == products[i].ProductTypeId).Title;
+        Console.WriteLine($"Item:{products[i].Name} Price: ${products[i].Price} Type: {title} ");
+    }
+
+    Console.WriteLine("Please enter the number of the product that you want to delete: ");
+    int choice;
+    while(!int.TryParse( Console.ReadLine(), out choice) || choice < 1 || choice > products.Count)
+    {
+        Console.WriteLine("Please enter the correct number to the product: ");
+    }
+
 }
 
 void AddProduct()
